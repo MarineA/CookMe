@@ -17,6 +17,8 @@ public class ConnexionFactory {
         if (connectionMySQL == null) {
             try {
                 MysqlDataSource mySQL = new MysqlDataSource();
+                mySQL.setUrl("jdbc:mysql://localhost");
+                mySQL.setPort(8888);
                 mySQL.setDatabaseName("projetJEE");
                 mySQL.setUser("root");
                 mySQL.setPassword("");

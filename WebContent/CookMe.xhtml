@@ -8,6 +8,7 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 <title>Cook Me</title>
 </h:head>
 
+<h:body>
 <ui:composition template="/template/layout.xhtml">
 
 	<ui:define name="activity">
@@ -20,7 +21,7 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 		
 			<h:commandButton value="Emergency" action="#{pageMngBean.goToEmergencyPage}"  />
 	
-			<h:commandButton value="Recipes" action="#{pageMngBean.goToRecipetPage}"  />
+			<h:commandButton value="Recipes" action="#{pageMngBean.goToRecipePage}"  />
 		
 			<h:commandButton value="Shop" action="#{pageMngBean.goToShopPage}"  />
 	

@@ -1,5 +1,10 @@
 @CHARSET "UTF-8";
 
+h1
+{
+	text-align:center;
+	
+}
 #header {
 	background-color: red;
 }
