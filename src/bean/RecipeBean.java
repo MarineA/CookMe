@@ -1,23 +1,25 @@
 package bean;
 
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
 public class RecipeBean {
 	
 	private int id;
 	private String title;
 	private int duration;
-	private int expertyse;
+	private int expertyse = 1;
 	private String type;
-	private int nbPeople;
+	private int nbPeople = 1 ;
 	private String img;
-	private String descritpion;
-	
+	private String description;
 	
 	public RecipeBean(){
 		
 	}
 	
 	public RecipeBean(int id, String title, int duration, int expertyse, String type, int nbPeople, String img,
-			String descritpion) {
+			String description) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -26,7 +28,7 @@ public class RecipeBean {
 		this.type = type;
 		this.nbPeople = nbPeople;
 		this.img = img;
-		this.descritpion = descritpion;
+		this.description = description;
 	}
 
 	public int getId() {
@@ -98,13 +100,13 @@ public class RecipeBean {
 	}
 
 
-	public String getDescritpion() {
-		return descritpion;
+	public String getDescription() {
+		return description;
 	}
 
 
-	public void setDescritpion(String descritpion) {
-		this.descritpion = descritpion;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 	

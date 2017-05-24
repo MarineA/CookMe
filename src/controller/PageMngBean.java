@@ -28,4 +28,8 @@ public class PageMngBean implements Serializable{
 	public String goToShopPage(){
 		return "shop.xhtml";
 	}
+	
+	public String goToConnectPage(){
+		return "recipe.xhtml";
+	}
 }
