@@ -1,18 +1,20 @@
 package bean;
 
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
 public class RecipeBean {
 	
 	private int id;
 	private String title;
 	private int duration;
-	private int expertyse;
+	private int expertyse = 1;
 	private String type;
-	private int nbPeople;
+	private int nbPeople = 1 ;
 	private String img;
 	private String description;
-	
-	
-	public RecipeBean(){
+
+		public RecipeBean(){
 		
 	}
 	

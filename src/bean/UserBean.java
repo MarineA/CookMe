@@ -1,5 +1,8 @@
 package bean;
 
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
 public class UserBean {
 	private int id;
 	private String firstName;
@@ -12,8 +15,6 @@ public class UserBean {
 	public UserBean(){
 		
 	}
-	
-	
 
 	public UserBean(int id, String firstName, String lastName, int age, String email, String login, String password) {
 		super();

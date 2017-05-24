@@ -23,7 +23,7 @@ public class UserDao {
 	        connexionDB = ConnexionFactory.getInstance();
 	        ResultSet resultat;
 	        Statement state = connexionDB.createStatement();
-	        resultat = state.executeQuery("SELECT * FROM user");
+	        resultat = state.executeQuery("SELECT * FROM users");
 	        HashMap<String, UserBean> hashmapRecipe = new HashMap<>();
 	        while(resultat.next()){
 	            hashmapRecipe.put(resultat.getString(1),new UserBean(resultat.getInt(0), resultat.getString(1), resultat.getString(2),resultat.getInt(3), resultat.getString(4), resultat.getString(5), resultat.getString(6)));
@@ -37,7 +37,7 @@ public class UserDao {
 	        connexionDB = ConnexionFactory.getInstance();
 	        ResultSet resultat;
 	        UserBean recipe;
-	        try (PreparedStatement PS = connexionDB.prepareStatement("SELECT * FROM user WHERE id=?")) {
+	        try (PreparedStatement PS = connexionDB.prepareStatement("SELECT * FROM users WHERE id=?")) {
 	            PS.setString(0, Integer.toString(id));
 	            resultat = PS.executeQuery();
 	            resultat.next();
@@ -52,7 +52,7 @@ public class UserDao {
 	    public boolean insert(UserBean recipe) throws SQLException,IOException{
 	        boolean res = true;
 	        connexionDB = ConnexionFactory.getInstance();
-	        try (PreparedStatement ps = connexionDB.prepareStatement("INSERT INTO user(firstName,lastName,age,email,password) values(?,?,?,?,?)")) {
+	        try (PreparedStatement ps = connexionDB.prepareStatement("INSERT INTO users(firstName,lastName,age,email,password) values(?,?,?,?,?)")) {
 	            ps.setString(1, recipe.getFirstName());
 	            ps.setString(2, recipe.getLastName());
 	            ps.setInt(3,recipe.getAge());
@@ -77,7 +77,7 @@ public class UserDao {
 	    public boolean delete(UserBean recipe)throws SQLException,IOException{
 	        boolean res = true;
 	        connexionDB = ConnexionFactory.getInstance();
-	        try (PreparedStatement ps = connexionDB.prepareStatement("DELETE FROM user where id=?")) {
+	        try (PreparedStatement ps = connexionDB.prepareStatement("DELETE FROM users where id=?")) {
 	            ps.setString(1, recipe.getFirstName());
 	            try {
 	                ps.executeUpdate();
@@ -97,7 +97,7 @@ public class UserDao {
 	    public boolean update(UserBean recipe)throws SQLException,IOException{
 	        boolean res = true;
 	        connexionDB = ConnexionFactory.getInstance();
-	        try (PreparedStatement ps = connexionDB.prepareStatement("UPDATE user SET firstName=? lastName=? age=? email=? login=? password=? where id=?")) {
+	        try (PreparedStatement ps = connexionDB.prepareStatement("UPDATE users SET firstName=? lastName=? age=? email=? login=? password=? where id=?")) {
 	            ps.setString(1, recipe.getFirstName());
 	            ps.setString(2, recipe.getLastName());
 	            ps.setInt(3,recipe.getAge());
