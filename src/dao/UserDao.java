@@ -49,16 +49,16 @@ public class UserDao {
 	    }
 	    
 	   
-	    public boolean insert(UserBean recipe) throws SQLException,IOException{
+	    public boolean insert(UserBean user) throws SQLException,IOException{
 	        boolean res = true;
 	        connexionDB = ConnexionFactory.getInstance();
 	        try (PreparedStatement ps = connexionDB.prepareStatement("INSERT INTO users(firstName,lastName,age,email,password) values(?,?,?,?,?)")) {
-	            ps.setString(1, recipe.getFirstName());
-	            ps.setString(2, recipe.getLastName());
-	            ps.setInt(3,recipe.getAge());
-	            ps.setString(4,recipe.getEmail());
-	            ps.setString(5,recipe.getLogin());
-	            ps.setString(6,recipe.getPassword());
+	            ps.setString(1, user.getFirstName());
+	            ps.setString(2, user.getLastName());
+	            ps.setInt(3,user.getAge());
+	            ps.setString(4,user.getEmail());
+	            ps.setString(5,user.getLogin());
+	            ps.setString(6,user.getPassword());
 	            try {
 	                ps.executeUpdate();
 	            } catch (SQLException e) {
@@ -94,16 +94,16 @@ public class UserDao {
 	    }
 	    
 
-	    public boolean update(UserBean recipe)throws SQLException,IOException{
+	    public boolean update(UserBean user)throws SQLException,IOException{
 	        boolean res = true;
 	        connexionDB = ConnexionFactory.getInstance();
 	        try (PreparedStatement ps = connexionDB.prepareStatement("UPDATE users SET firstName=? lastName=? age=? email=? login=? password=? where id=?")) {
-	            ps.setString(1, recipe.getFirstName());
-	            ps.setString(2, recipe.getLastName());
-	            ps.setInt(3,recipe.getAge());
-	            ps.setString(4,recipe.getEmail());
-	            ps.setString(5,recipe.getLogin());
-	            ps.setString(6,recipe.getPassword());
+	            ps.setString(1, user.getFirstName());
+	            ps.setString(2, user.getLastName());
+	            ps.setInt(3,user.getAge());
+	            ps.setString(4,user.getEmail());
+	            ps.setString(5,user.getLogin());
+	            ps.setString(6,user.getPassword());
 	            try {
 	                ps.executeUpdate();
 	            } catch (SQLException e) {
