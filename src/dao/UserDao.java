@@ -48,7 +48,7 @@ public class UserDao {
 	        return userbean;
 	    }
 	    
-	   
+	  
 	    public boolean insert(UserBean userbean) throws SQLException,IOException{
 	        boolean res = true;
 	        connexionDB = ConnexionFactory.getInstance();
@@ -60,6 +60,7 @@ public class UserDao {
 	            ps.setString(5,userbean.getLogin());
 	            ps.setString(6,userbean.getPassword());
 	            ps.setInt(7,userbean.getTypeUser());
+
 	            try {
 	                ps.executeUpdate();
 	            } catch (SQLException e) {
@@ -95,6 +96,7 @@ public class UserDao {
 	    }
 	    
 
+
 	    public boolean update(UserBean userbean)throws SQLException,IOException{
 	        boolean res = true;
 	        connexionDB = ConnexionFactory.getInstance();
@@ -106,6 +108,7 @@ public class UserDao {
 	            ps.setString(5,userbean.getLogin());
 	            ps.setString(6,userbean.getPassword());
 	            ps.setInt(7,userbean.getTypeUser());
+
 	            try {
 	                ps.executeUpdate();
 	            } catch (SQLException e) {

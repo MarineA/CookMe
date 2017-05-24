@@ -1,0 +1,43 @@
+@CHARSET "UTF-8";
+
+#header {
+	background-color: red;
+}
+
+#activity{
+	position: absolute;
+	top:0;
+	left:0;
+	width:20%;
+	background-color:#e6f7ff;
+}
+
+#header-right{
+	position: absolute;
+	top:0;
+	right:0;
+	width:30%;
+}
+
+
+#copyright{
+	position: absolute;
+	bottom:0;
+	left:0;
+	width:30%;
+}
+
+#footer-logo{
+	position: absolute;
+	bottom:0;
+	right:0;
+	width:20%;
+	text-align: right;
+}
+
+#form-activity{
+	position: absolute;
+	top: 50%;
+	left:45%;
+	width:20%;
+}

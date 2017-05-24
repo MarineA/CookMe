@@ -26,12 +26,28 @@ private Connection connexionDB;
         resultat = state.executeQuery("SELECT * FROM recipe");
         HashMap<String, RecipeBean> hashmapRecipe = new HashMap<>();
         while(resultat.next()){
-            hashmapRecipe.put(resultat.getString(1),new RecipeBean(resultat.getInt(0), resultat.getString(1), resultat.getInt(2),resultat.getInt(3), resultat.getString(4), resultat.getInt(5), resultat.getString(6), resultat.getString(7)));
+            hashmapRecipe.put(resultat.getString(0),new RecipeBean(resultat.getInt(0), resultat.getString(1), resultat.getInt(2),resultat.getInt(3), resultat.getString(4), resultat.getInt(5), resultat.getString(6), resultat.getString(7)));
         }
         resultat.close();
         connexionDB.close();
         return hashmapRecipe;
     }
+    
+    
+    public HashMap<String, RecipeBean> research(int duration, int nbPeople, int expertyse, String type) throws Exception{
+        connexionDB = ConnexionFactory.getInstance();
+        ResultSet resultat;
+        Statement state = connexionDB.createStatement();
+        resultat = state.executeQuery("SELECT * FROM recipe where duration="+duration+" and nbPeople="+nbPeople+"and expertyse="+expertyse+"and type="+type);
+        HashMap<String, RecipeBean> hashmapRecipe = new HashMap<>();
+        while(resultat.next()){
+            hashmapRecipe.put(resultat.getString(0),new RecipeBean(resultat.getInt(0), resultat.getString(1), resultat.getInt(2),resultat.getInt(3), resultat.getString(4), resultat.getInt(5), resultat.getString(6), resultat.getString(7)));
+        }
+        resultat.close();
+        connexionDB.close();
+        return hashmapRecipe;
+    }
+    
     
     public RecipeBean select(int id) throws SQLException,IOException{
         connexionDB = ConnexionFactory.getInstance();
