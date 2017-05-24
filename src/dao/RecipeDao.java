@@ -52,14 +52,14 @@ private Connection connexionDB;
     public boolean insert(RecipeBean recipe) throws SQLException,IOException{
         boolean res = true;
         connexionDB = ConnexionFactory.getInstance();
-        try (PreparedStatement ps = connexionDB.prepareStatement("INSERT INTO recipe(title, duration, expertyse, type, nbPeople, img, descirption) values(?,?,?)")) {
+        try (PreparedStatement ps = connexionDB.prepareStatement("INSERT INTO recipe(title, duration, expertyse, type, nbPeople, img, description) values(?,?,?)")) {
             ps.setString(1, recipe.getTitle());
             ps.setInt(2, recipe.getDuration());
             ps.setInt(3,recipe.getExpertyse());
             ps.setString(4,recipe.getType());
             ps.setInt(5,recipe.getNbPeople());
             ps.setString(6,recipe.getImg());
-            ps.setString(7,recipe.getDescritpion());
+            ps.setString(7,recipe.getDescription());
             try {
                 ps.executeUpdate();
             } catch (SQLException e) {
@@ -105,7 +105,7 @@ private Connection connexionDB;
             ps.setString(4,recipe.getType());
             ps.setInt(5,recipe.getNbPeople());
             ps.setString(6,recipe.getImg());
-            ps.setString(7,recipe.getDescritpion());
+            ps.setString(7,recipe.getDescription());
             try {
                 ps.executeUpdate();
             } catch (SQLException e) {
