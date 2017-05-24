@@ -59,7 +59,7 @@ private Connection connexionDB;
             ps.setString(4,recipe.getType());
             ps.setInt(5,recipe.getNbPeople());
             ps.setString(6,recipe.getImg());
-            ps.setString(7,recipe.getDescritpion());
+            ps.setString(7,recipe.getDescription());
             try {
                 ps.executeUpdate();
             } catch (SQLException e) {
@@ -105,7 +105,7 @@ private Connection connexionDB;
             ps.setString(4,recipe.getType());
             ps.setInt(5,recipe.getNbPeople());
             ps.setString(6,recipe.getImg());
-            ps.setString(7,recipe.getDescritpion());
+            ps.setString(7,recipe.getDescription());
             try {
                 ps.executeUpdate();
             } catch (SQLException e) {
