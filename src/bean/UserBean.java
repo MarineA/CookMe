@@ -11,14 +11,14 @@ public class UserBean {
 	private String email;
 	private String login;
 	private String password;
-	
+	private int typeUser;
+
+
 	public UserBean(){
 		
 	}
-	
-	
 
-	public UserBean(int id, String firstName, String lastName, int age, String email, String login, String password) {
+	public UserBean(int id, String firstName, String lastName, int age, String email, String login, String password, int typeUser) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -27,6 +27,7 @@ public class UserBean {
 		this.email = email;
 		this.login = login;
 		this.password = password;
+		this.typeUser = typeUser;
 	}
 
 	public int getId() {
@@ -83,6 +84,14 @@ public class UserBean {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public int getTypeUser() {
+		return typeUser;
+	}
+
+	public void setTypeUser(int typeUser) {
+		this.typeUser= typeUser;
 	}
 	
 	
