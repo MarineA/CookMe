@@ -23,7 +23,7 @@ public class UserDao {
 	        connexionDB = ConnexionFactory.getInstance();
 	        ResultSet resultat;
 	        Statement state = connexionDB.createStatement();
-	        resultat = state.executeQuery("SELECT * FROM user");
+	        resultat = state.executeQuery("SELECT * FROM users");
 	        HashMap<String, UserBean> hashmapRecipe = new HashMap<>();
 	        while(resultat.next()){
 	            hashmapRecipe.put(resultat.getString(1),new UserBean(resultat.getInt(0), resultat.getString(1), resultat.getString(2),resultat.getInt(3), resultat.getString(4), resultat.getString(5), resultat.getString(6)));
