@@ -1,5 +1,8 @@
 package bean;
 
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
 public class UserBean {
 	private int id;
 	private String firstName;
