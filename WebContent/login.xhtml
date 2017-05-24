@@ -1,0 +1,22 @@
+
+	
+	<h:form>
+		<table border="0"> 
+			<tr>
+				<td> Your Login</td> 
+				<td> 
+					<h:inputText id="login" value="#{userBean.login}" required="true">
+						<f:validator validatorId="validators.login" />
+					</h:inputText>
+				</td>
+				<td> <h:message for="login" showDetail="true" style="color:red"/></td>	
+			</tr>
+			
+			<tr>
+				<td> Your Password</td> <td> <h:inputSecret value="#{userBean.password}"/></td>
+			</tr>
+			<tr>
+				<td> </td> <td> <h:commandButton  value="OK" action="#{pageMngBean.goToConnectPage}"/></td>
+			</tr>
+		</table>
+	</h:form>
