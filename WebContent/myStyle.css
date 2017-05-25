@@ -1,9 +1,5 @@
 @CHARSET "UTF-8";
 
-#header {
-	background-color: red;
-}
-
 #activity{
 	position: absolute;
 	top:0;
