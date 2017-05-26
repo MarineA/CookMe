@@ -1,9 +1,13 @@
 package bean;
 
-import javax.faces.bean.ManagedBean;
+import java.io.Serializable;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
+@SessionScoped
 @ManagedBean
-public class UserBean {
+public class UserBean implements Serializable{
 	private int id;
 	private String firstName;
 	private String lastName;

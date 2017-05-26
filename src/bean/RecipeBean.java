@@ -1,9 +1,11 @@
 package bean;
 
+import java.io.Serializable;
+
 import javax.faces.bean.ManagedBean;
 
 @ManagedBean
-public class RecipeBean {
+public class RecipeBean implements Serializable{
 	
 	private int id;
 	private String title;

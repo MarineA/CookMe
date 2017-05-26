@@ -8,9 +8,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
 import bean.UserBean;
 import model.ConnexionFactory;
 
+@ManagedBean
+@SessionScoped
 public class UserDao {
 
 	private Connection connexionDB;
@@ -52,7 +57,7 @@ public class UserDao {
 	    public boolean insert(UserBean userbean) throws SQLException,IOException{
 	        boolean res = true;
 	        connexionDB = ConnexionFactory.getInstance();
-	        try (PreparedStatement ps = connexionDB.prepareStatement("INSERT INTO users(firstName,lastName,age,email,login,password, typeUser ) values(?,?,?,?,?)")) {
+	        try (PreparedStatement ps = connexionDB.prepareStatement("INSERT INTO users(firstName,lastName,age,email,login,passwd,typeUser) values(?,?,?,?,?,?,?)")) {
 	            ps.setString(1, userbean.getFirstName());
 	            ps.setString(2, userbean.getLastName());
 	            ps.setInt(3,userbean.getAge());
