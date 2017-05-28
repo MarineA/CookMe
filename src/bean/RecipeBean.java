@@ -13,8 +13,8 @@ public class RecipeBean {
 	private int nbPeople = 1 ;
 	private String img;
 	private String description;
-	
-	public RecipeBean(){
+
+		public RecipeBean(){
 		
 	}
 	

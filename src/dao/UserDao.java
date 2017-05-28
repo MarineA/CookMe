@@ -26,7 +26,7 @@ public class UserDao {
 	        resultat = state.executeQuery("SELECT * FROM users");
 	        HashMap<String, UserBean> hashmapRecipe = new HashMap<>();
 	        while(resultat.next()){
-	            hashmapRecipe.put(resultat.getString(1),new UserBean(resultat.getInt(0), resultat.getString(1), resultat.getString(2),resultat.getInt(3), resultat.getString(4), resultat.getString(5), resultat.getString(6)));
+	            hashmapRecipe.put(resultat.getString(1),new UserBean(resultat.getInt(0), resultat.getString(1), resultat.getString(2),resultat.getInt(3), resultat.getString(4), resultat.getString(5), resultat.getString(6), resultat.getInt(7)));
 	        }
 	        resultat.close();
 	        connexionDB.close();
@@ -36,29 +36,31 @@ public class UserDao {
 	    public UserBean select(int id) throws SQLException,IOException{
 	        connexionDB = ConnexionFactory.getInstance();
 	        ResultSet resultat;
-	        UserBean recipe;
+	        UserBean userbean;
 	        try (PreparedStatement PS = connexionDB.prepareStatement("SELECT * FROM users WHERE id=?")) {
 	            PS.setString(0, Integer.toString(id));
 	            resultat = PS.executeQuery();
 	            resultat.next();
-	            recipe = new UserBean(resultat.getInt(0), resultat.getString(1), resultat.getString(2),resultat.getInt(3), resultat.getString(4), resultat.getString(5), resultat.getString(6));
+	            userbean = new UserBean(resultat.getInt(0), resultat.getString(1), resultat.getString(2),resultat.getInt(3), resultat.getString(4), resultat.getString(5), resultat.getString(6), resultat.getInt(7));
 	        }
 	        resultat.close();
 	        connexionDB.close();
-	        return recipe;
+	        return userbean;
 	    }
 	    
-	   
-	    public boolean insert(UserBean user) throws SQLException,IOException{
+	  
+	    public boolean insert(UserBean userbean) throws SQLException,IOException{
 	        boolean res = true;
 	        connexionDB = ConnexionFactory.getInstance();
-	        try (PreparedStatement ps = connexionDB.prepareStatement("INSERT INTO users(firstName,lastName,age,email,password) values(?,?,?,?,?)")) {
-	            ps.setString(1, user.getFirstName());
-	            ps.setString(2, user.getLastName());
-	            ps.setInt(3,user.getAge());
-	            ps.setString(4,user.getEmail());
-	            ps.setString(5,user.getLogin());
-	            ps.setString(6,user.getPassword());
+	        try (PreparedStatement ps = connexionDB.prepareStatement("INSERT INTO users(firstName,lastName,age,email,login,password, typeUser ) values(?,?,?,?,?)")) {
+	            ps.setString(1, userbean.getFirstName());
+	            ps.setString(2, userbean.getLastName());
+	            ps.setInt(3,userbean.getAge());
+	            ps.setString(4,userbean.getEmail());
+	            ps.setString(5,userbean.getLogin());
+	            ps.setString(6,userbean.getPassword());
+	            ps.setInt(7,userbean.getTypeUser());
+
 	            try {
 	                ps.executeUpdate();
 	            } catch (SQLException e) {
@@ -74,11 +76,11 @@ public class UserDao {
 	    }
 	    
 
-	    public boolean delete(UserBean recipe)throws SQLException,IOException{
+	    public boolean delete(UserBean userbean)throws SQLException,IOException{
 	        boolean res = true;
 	        connexionDB = ConnexionFactory.getInstance();
 	        try (PreparedStatement ps = connexionDB.prepareStatement("DELETE FROM users where id=?")) {
-	            ps.setString(1, recipe.getFirstName());
+	            ps.setString(1, userbean.getFirstName());
 	            try {
 	                ps.executeUpdate();
 	            } catch (SQLException e) {
@@ -94,16 +96,19 @@ public class UserDao {
 	    }
 	    
 
-	    public boolean update(UserBean user)throws SQLException,IOException{
+
+	    public boolean update(UserBean userbean)throws SQLException,IOException{
 	        boolean res = true;
 	        connexionDB = ConnexionFactory.getInstance();
 	        try (PreparedStatement ps = connexionDB.prepareStatement("UPDATE users SET firstName=? lastName=? age=? email=? login=? password=? where id=?")) {
-	            ps.setString(1, user.getFirstName());
-	            ps.setString(2, user.getLastName());
-	            ps.setInt(3,user.getAge());
-	            ps.setString(4,user.getEmail());
-	            ps.setString(5,user.getLogin());
-	            ps.setString(6,user.getPassword());
+	            ps.setString(1, userbean.getFirstName());
+	            ps.setString(2, userbean.getLastName());
+	            ps.setInt(3,userbean.getAge());
+	            ps.setString(4,userbean.getEmail());
+	            ps.setString(5,userbean.getLogin());
+	            ps.setString(6,userbean.getPassword());
+	            ps.setInt(7,userbean.getTypeUser());
+
 	            try {
 	                ps.executeUpdate();
 	            } catch (SQLException e) {
