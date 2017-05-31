@@ -1,5 +1,6 @@
 @CHARSET "UTF-8";
 
+<<<<<<< HEAD
 h1
 {
 	text-align:center;
@@ -9,6 +10,8 @@ h1
 	background-color: red;
 }
 
+=======
+>>>>>>> bb5267ce10ba85b7c725038281015bd972f51b30
 #activity{
 	position: absolute;
 	top:0;
@@ -43,6 +46,13 @@ h1
 #form-activity{
 	position: absolute;
 	top: 50%;
+	left:45%;
+	width:20%;
+}
+
+#content {
+	position: absolute;
+	top: 20%;
 	left:45%;
 	width:20%;
 }
