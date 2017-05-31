@@ -1,7 +1,6 @@
 package controller;
 
-import java.io.IOException;
-import java.sql.SQLException;
+import java.util.HashMap;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
@@ -13,16 +12,22 @@ import model.ConnexionFactory;
 @ManagedBean
 @ApplicationScoped
 public class RecipeControllerBean {
-	
-	
-	public String Research(RecipeBean recipe) throws IOException, SQLException{
-		
-		
-		RecipeDao recipeDao = new RecipeDao(ConnexionFactory.getInstance());
-	
-		
-		return "search.xhtml";
+
+    private HashMap<String, RecipeBean> hashmapRecipe = new HashMap<>();
+    
+	public RecipeControllerBean() {
 		
 	}
 
+	public String research(RecipeBean recipebean) throws Exception{
+	
+		System.out.println("search");
+		RecipeDao recipeDao = new RecipeDao(ConnexionFactory.getInstance());
+	
+		recipeDao.research(10,4,2, "salade");
+	
+		return "search.xhtml";
+		
+	}
+	
 }
