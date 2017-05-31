@@ -14,9 +14,10 @@ public class ConnexionFactory {
     public static Connection getInstance() throws IOException, SQLException {
     	String url = "jdbc:mysql://localhost:8889/projetJEE?relaxAutoCommit=true";
     	String login = "root";
-    	String pwd = "root";
+    	String pwd = "";
         if (connectionMySQL == null) {
             try {
+
             	Class.forName("com.mysql.jdbc.Driver");
             	return DriverManager.getConnection(url, login, pwd);
             } catch (ClassNotFoundException e) {

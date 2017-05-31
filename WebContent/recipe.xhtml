@@ -14,27 +14,33 @@ xmlns:f="http://java.sun.com/jsf/core">
 <h2><center> Tell what you want !</center></h2>
 <h:form id="form_recipe" name="form_recipe" method="get" action="#{recipeControllerBean.research(recipeBean)}">
 <center>
-<h:panelGrid columns="2">            
+<h:panelGrid columns="4">            
 
+ <img src="img/clock_img.png" style="width:50px" alt="Horloge"> </img>
+ 
 <h:panelGrid columns="1" style="margin-bottom: 10px">
 	<h:outputLabel for="duration" value="Preparation duration " />
 	<p:spinner id="duration" value="#{recipeBean.duration}" min="0" max="500" />
 	<h:outputLabel for="duration" value="min" />
 </h:panelGrid>
 
+<img src="img/people_img.jpg" style="width:50px" alt="Many people"> </img>
+ 
 <h:panelGrid columns="1" style="margin-bottom: 10px">
 <h:outputLabel for="nbPeople" value="For how many people " />
     <p:inputText id="nbPeople" value="#{recipeBean.nbPeople}"  min="0" max="500" />
     <p:slider for="nbPeople"/>
 </h:panelGrid>
 
+<img src="img/note_img.png" style="width:50px" alt="note"> </img>
 
 <h:panelGrid columns="1" style="margin-bottom: 10px">
 <h:outputText value="Cook expertise" />
 <p:rating value="#{recipeBean.expertyse}" />
 </h:panelGrid>
 
-
+<img src="img/load_img.png" style="width:50px" alt="Type"> </img>
+ 
 <h:panelGrid columns="1" style="margin-bottom: 10px">
 <h:outputLabel for="cookType" value="Cook type" />
 <p:selectCheckboxMenu id="cookType" value="#{recipeBean.type}" label="Cook type"
@@ -48,7 +54,7 @@ xmlns:f="http://java.sun.com/jsf/core">
 
 </h:panelGrid>
 
-<h:commandButton value="Teach me"  />
+<h:commandButton value="Teach me" style="background-color:#2ECCFA; width:230px;" />
 
 </center>
       
