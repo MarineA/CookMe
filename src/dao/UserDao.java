@@ -69,7 +69,7 @@ public class UserDao {
 	            try {
 	                ps.executeUpdate();
 	            } catch (SQLException e) {
-	                System.err.println(e.getMessage());
+	                System.err.println("SQL Exception : "+e.getMessage());
 	                ps.cancel();
 	                res = false;
 	            }
@@ -89,7 +89,7 @@ public class UserDao {
 	            try {
 	                ps.executeUpdate();
 	            } catch (SQLException e) {
-	                System.err.println(e.getMessage());
+	                System.err.println("SQL Exception : "+e.getMessage());
 	                ps.cancel();
 	                res = false;
 	            }

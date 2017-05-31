@@ -3,6 +3,12 @@
 	  xmlns:h="http://java.sun.com/jsf/html" 
 	  xmlns:ui="http://java.sun.com/jsf/facelets">
 
+
+
+
+
+
+
 <body>
 	<ui:composition>
 		<!--  TO DO ajouter le formulaire de connexion -->
@@ -12,8 +18,11 @@
 				<h:commandButton value="(+) Become Member" action="#{pageMngBean.goToEmergencyPage}"  />
 			</h:form>
 			
+			<jsp:useBean id="myUser" scope="session" class="bean.UserBean">
+			
 			<ui:include src="/login.xhtml">
 			</ui:include>
+			</jsp:useBean>
 		</div>
 	</ui:composition>
 </body>
