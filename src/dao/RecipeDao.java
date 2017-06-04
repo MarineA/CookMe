@@ -6,9 +6,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import bean.RecipeBean;
+import bean.RecipeList;
 import model.ConnexionFactory;
 
 public class RecipeDao {
@@ -35,22 +38,23 @@ public class RecipeDao {
 		return hashmapRecipe;
 	}
 
-	public HashMap<String, RecipeBean> research(int duration, int nbPeople, int expertise, String type)
+	// public HashMap<String, RecipeBean> research(int duration, int nbPeople,
+	// int expertise, String typeRecipe)
+	public List<RecipeBean> research(int duration, int nbPeople, int expertise)
 			throws Exception {
 		connexionDB = ConnexionFactory.getInstance();
 		ResultSet resultat;
 		Statement state = connexionDB.createStatement();
 		resultat = state.executeQuery("SELECT * FROM recipe where duration=" + duration + " and nbPeople=" + nbPeople
-				+ " and expertise=" + expertise + " and type=" + type);
-		HashMap<String, RecipeBean> hashmapRecipe = new HashMap<>();
+				+ " and expertise=" + expertise);
+		List<RecipeBean> listResearch = new ArrayList<>();
 		while (resultat.next()) {
-			hashmapRecipe.put(resultat.getString(0),
-					new RecipeBean(resultat.getInt(0), resultat.getString(1), resultat.getInt(2), resultat.getInt(3),
-							resultat.getString(4), resultat.getInt(5), resultat.getString(6), resultat.getString(7)));
+			listResearch.add(new RecipeBean(resultat.getInt(1), resultat.getString(2), resultat.getInt(3), resultat.getInt(4),
+							resultat.getString(5), resultat.getInt(6), resultat.getString(7), resultat.getString(8)));
 		}
 		resultat.close();
 		connexionDB.close();
-		return hashmapRecipe;
+		return listResearch;
 	}
 
 	public RecipeBean select(int id) throws SQLException, IOException {
@@ -73,11 +77,11 @@ public class RecipeDao {
 		boolean res = true;
 		connexionDB = ConnexionFactory.getInstance();
 		try (PreparedStatement ps = connexionDB.prepareStatement(
-				"INSERT INTO recipe(title, duration, expertise, type, nbPeople, img, description) values(?,?,?)")) {
+				"INSERT INTO recipe(title, duration, expertise, typeRecipe, nbPeople, img, description) values(?,?,?)")) {
 			ps.setString(1, recipe.getTitle());
 			ps.setInt(2, recipe.getDuration());
-			ps.setInt(3, recipe.getexpertise());
-			ps.setString(4, recipe.getType());
+			ps.setInt(3, recipe.getExpertise());
+			// ps.setString(4, recipe.gettypeRecipe());
 			ps.setInt(5, recipe.getNbPeople());
 			ps.setString(6, recipe.getImg());
 			ps.setString(7, recipe.getDescription());
@@ -118,11 +122,11 @@ public class RecipeDao {
 		boolean res = true;
 		connexionDB = ConnexionFactory.getInstance();
 		try (PreparedStatement ps = connexionDB.prepareStatement(
-				"UPDATE recipe SET title=? duration=? expertise=? type=? nbPeople=? img=? description=? where id=?")) {
+				"UPDATE recipe SET title=? duration=? expertise=? typeRecipe=? nbPeople=? img=? description=? where id=?")) {
 			ps.setString(1, recipe.getTitle());
 			ps.setInt(2, recipe.getDuration());
-			ps.setInt(3, recipe.getexpertise());
-			ps.setString(4, recipe.getType());
+			ps.setInt(3, recipe.getExpertise());
+			// ps.setList(4, recipe.gettypeRecipeList());
 			ps.setInt(5, recipe.getNbPeople());
 			ps.setString(6, recipe.getImg());
 			ps.setString(7, recipe.getDescription());

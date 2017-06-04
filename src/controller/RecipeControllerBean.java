@@ -6,6 +6,7 @@ import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 
 import bean.RecipeBean;
+import bean.RecipeList;
 import dao.RecipeDao;
 import model.ConnexionFactory;
 
@@ -13,19 +14,19 @@ import model.ConnexionFactory;
 @ApplicationScoped
 public class RecipeControllerBean {
 
-    private HashMap<String, RecipeBean> hashmapRecipe = new HashMap<>();
     
 	public RecipeControllerBean() {
 		
 	}
-
-	public String research(RecipeBean recipebean) throws Exception{
+				
+	public String research(RecipeBean recipeBean) throws Exception{
 	
-		System.out.println("search");
+		
 		RecipeDao recipeDao = new RecipeDao(ConnexionFactory.getInstance());
-	
-		recipeDao.research(10,4,2, "salade");
-	
+		RecipeList recipeList = new RecipeList();
+		recipeList.setRecipeList(recipeDao.research(recipeBean.getDuration(), recipeBean.getNbPeople(), recipeBean.getExpertise()));
+		System.out.println("search");
+		
 		return "search.xhtml";
 		
 	}

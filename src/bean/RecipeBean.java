@@ -13,8 +13,8 @@ public class RecipeBean implements Serializable{
 	private String title;
 	private int duration;
 	private int expertise = 1;
-	private String type;
-	private List<String> typeList;
+	private String typeRecipe;
+	private List<String> typeRecipeList;
 	private int nbPeople = 1 ;
 	private String img;
 	private String description;
@@ -23,18 +23,18 @@ public class RecipeBean implements Serializable{
 		
 	}
 	
-	public RecipeBean(int id, String title, int duration, int expertise, String type, int nbPeople, String img,
+	public RecipeBean(int id, String title, int duration, int expertise, String typeRecipe, int nbPeople, String img,
 			String description) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.duration = duration;
 		this.expertise = expertise;
-		this.type = type;
+		this.typeRecipe = typeRecipe;
 		this.nbPeople = nbPeople;
 		this.img = img;
 		this.description = description;
-		this.typeList=new ArrayList<String>();
+//		this.typeRecipeList=new ArrayList<String>();
 	}
 
 	public int getId() {
@@ -66,23 +66,23 @@ public class RecipeBean implements Serializable{
 	}
 
 
-	public int getexpertise() {
+	public int getExpertise() {
 		return expertise;
 	}
 
 
-	public void setexpertise(int expertise) {
+	public void setExpertise(int expertise) {
 		this.expertise = expertise;
 	}
 
 
-	public String getType() {
-		return type;
+	public String getTypeRecipe() {
+		return typeRecipe;
 	}
 
 
-	public void setType(String type) {
-		this.type = type;
+	public void setTypeRecipe(String typeRecipe) {
+		this.typeRecipe = typeRecipe;
 	}
 
 
@@ -115,12 +115,12 @@ public class RecipeBean implements Serializable{
 		this.description = description;
 	}
 
-	public List<String> getTypeList() {
-		return typeList;
+	public List<String> getTypeRecipeList() {
+		return typeRecipeList;
 	}
 
-	public void setTypeList(List<String> typeList) {
-		this.typeList = typeList;
+	public void setTypeRecipeList(List<String> typeRecipeList) {
+		this.typeRecipeList = typeRecipeList;
 	}
 	
 	
