@@ -20,12 +20,11 @@ import model.ConnexionFactory;
 public class RecipeControllerBean {
 	
 	
-	public String Research(RecipeBean recipe) throws IOException, SQLException{
-		
+	public String search(RecipeBean recipe) throws Exception{	
 		
 		RecipeDao recipeDao = new RecipeDao(ConnexionFactory.getInstance());
-	
-		
+		RecipeList recipeList = new RecipeList();
+		recipeList.setRecipes(recipeDao.research(recipe.getDuration(), recipe.getNbPeople(), recipe.getExpertise()));
 		return "search.xhtml";
 		
 	}

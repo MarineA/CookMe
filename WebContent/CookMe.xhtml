@@ -11,10 +11,6 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:body>
 <ui:composition template="/template/layout.xhtml">
 
-	<ui:define name="activity">
-	<h1>test</h1>
-	</ui:define>
-
 	<ui:define name="content">
 
 		<h:form id="form-activity">
@@ -24,6 +20,8 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 			<h:commandButton value="Recipes" style="background-color:#2ECCFA; width:230px;" action="#{pageMngBean.goToRecipePage}"  />
 		
 			<h:commandButton value="Shop" style="background-color:#04B45F; width:230px;" action="#{pageMngBean.goToShopPage}"  />
+			
+			<h:commandButton value="Administration" style="background-color:#04B45F; width:230px;" action="#{pageMngBean.goToAdminPage}"  />
 	
 		</h:form>
 	</ui:define>

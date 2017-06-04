@@ -35,6 +35,36 @@ private Connection connexionDB;
         return recipeList;
     }
     
+    public List<RecipeBean> research(int duration, int nbPeople, int expertise) throws Exception{
+        connexionDB = ConnexionFactory.getInstance();
+        ResultSet resultat;
+        List<RecipeBean> recipeList = new ArrayList<>();
+        
+        try (PreparedStatement ps = connexionDB.prepareStatement("SELECT * FROM recipe where duration=? and nbPeople=? and expertise=?")) {
+            ps.setInt(1, duration);
+            ps.setInt(2, nbPeople);
+            ps.setInt(3,expertise);
+            try {
+            	resultat = ps.executeQuery();
+            	
+                while(resultat.next()){
+                	recipeList.add(new RecipeBean(resultat.getInt(1), resultat.getString(2), resultat.getInt(3),resultat.getInt(4), resultat.getString(5), resultat.getInt(6), resultat.getString(7), resultat.getString(8)));
+                }
+                resultat.close();
+                connexionDB.close();
+                
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
+                ps.cancel();
+            }
+            connexionDB.commit();
+            ps.close();
+            connexionDB.close();
+        }
+  
+        return recipeList;
+    }
+    
     
     public HashMap<String, RecipeBean> research(int duration, int nbPeople, int expertyse, String type) throws Exception{
         connexionDB = ConnexionFactory.getInstance();

@@ -48,4 +48,8 @@ public class PageMngBean implements Serializable{
 		return "userCreation.xhtml";
 	}	
 	
+	public String goToAdminPage(){
+		return "adminMenu.xhtml";
+	}
+	
 }

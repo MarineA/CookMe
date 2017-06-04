@@ -12,7 +12,7 @@ xmlns:f="http://java.sun.com/jsf/core">
 <h1>Recipe</h1>
 
 <h2><center> Tell what you want !</center></h2>
-<h:form id="form_recipe" name="form_recipe" method="get" action="#{recipeControllerBean.research(recipeBean)}">
+<h:form id="form_recipe" name="form_recipe" method="get" action="#{recipeControllerBean.search(recipeBean)}">
 <center>
 <h:panelGrid columns="4">            
 
@@ -36,14 +36,14 @@ xmlns:f="http://java.sun.com/jsf/core">
 
 <h:panelGrid columns="1" style="margin-bottom: 10px">
 <h:outputText value="Cook expertise" />
-<p:rating value="#{recipeBean.expertyse}" />
+<p:rating value="#{recipeBean.expertise}" />
 </h:panelGrid>
 
 <img src="img/load_img.png" style="width:50px" alt="Type"> </img>
  
 <h:panelGrid columns="1" style="margin-bottom: 10px">
 <h:outputLabel for="cookType" value="Cook type" />
-<p:selectCheckboxMenu id="cookType" value="#{recipeBean.type}" label="Cook type"
+<p:selectCheckboxMenu id="cookType" label="Cook type"
                       filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
    <f:selectItem itemLabel="Salade" itemValue="1" />
    <f:selectItem itemLabel="Meal" itemValue="2" />
@@ -54,7 +54,7 @@ xmlns:f="http://java.sun.com/jsf/core">
 
 </h:panelGrid>
 
-<h:commandButton value="Teach me" style="background-color:#2ECCFA; width:230px;" />
+<h:commandButton value="Teach me"  method="get" style="background-color:#2ECCFA; width:230px;" action="#{recipeControllerBean.search(recipeBean)}"/>
 
 </center>
       

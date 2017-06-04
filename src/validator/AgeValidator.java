@@ -16,7 +16,7 @@ public class AgeValidator implements Validator{
 	
 	private Matcher matcher;
 	private Pattern agePattern;
-	private static final String AGE_PATTERN = "[0-100]";
+	private static final String AGE_PATTERN = "^[0-9]{1,2}$";
 	
 	
 	public AgeValidator() {
