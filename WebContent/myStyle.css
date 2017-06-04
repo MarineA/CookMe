@@ -1,17 +1,11 @@
 @CHARSET "UTF-8";
 
-<<<<<<< HEAD
 h1
 {
 	text-align:center;
 	
 }
-#header {
-	background-color: red;
-}
 
-=======
->>>>>>> bb5267ce10ba85b7c725038281015bd972f51b30
 #activity{
 	position: absolute;
 	top:0;
@@ -53,6 +47,19 @@ h1
 #content {
 	position: absolute;
 	top: 20%;
-	left:45%;
-	width:20%;
+	/*left:45%;*/
+	width:100%;
 }
+
+.rowA{
+	background-color: white;
+}
+
+.rowB{
+	background-color: #689AFF;
+}
+
+.grid.ui-panelgrid>*>tr,
+.grid.ui-panelgrid>*>tr>td {
+    border: none;
+} 

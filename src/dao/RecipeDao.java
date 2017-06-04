@@ -6,7 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import bean.RecipeBean;
 import model.ConnexionFactory;
@@ -19,18 +21,18 @@ private Connection connexionDB;
        this.connexionDB = connexion;
     }
    
-    public HashMap<String, RecipeBean> selectAll() throws Exception{
+    public List<RecipeBean> selectAll() throws Exception{
         connexionDB = ConnexionFactory.getInstance();
         ResultSet resultat;
         Statement state = connexionDB.createStatement();
         resultat = state.executeQuery("SELECT * FROM recipe");
-        HashMap<String, RecipeBean> hashmapRecipe = new HashMap<>();
+        List<RecipeBean> recipeList = new ArrayList<>();
         while(resultat.next()){
-            hashmapRecipe.put(resultat.getString(0),new RecipeBean(resultat.getInt(0), resultat.getString(1), resultat.getInt(2),resultat.getInt(3), resultat.getString(4), resultat.getInt(5), resultat.getString(6), resultat.getString(7)));
+        	recipeList.add(new RecipeBean(resultat.getInt(1), resultat.getString(2), resultat.getInt(3),resultat.getInt(4), resultat.getString(5), resultat.getInt(6), resultat.getString(7), resultat.getString(8)));
         }
         resultat.close();
         connexionDB.close();
-        return hashmapRecipe;
+        return recipeList;
     }
     
     
@@ -68,10 +70,10 @@ private Connection connexionDB;
     public boolean insert(RecipeBean recipe) throws SQLException,IOException{
         boolean res = true;
         connexionDB = ConnexionFactory.getInstance();
-        try (PreparedStatement ps = connexionDB.prepareStatement("INSERT INTO recipe(title, duration, expertyse, type, nbPeople, img, description) values(?,?,?)")) {
+        try (PreparedStatement ps = connexionDB.prepareStatement("INSERT INTO recipe(title, duration, expertise, type, nbPeople, img, description) values(?,?,?,?,?,?,?)")) {
             ps.setString(1, recipe.getTitle());
             ps.setInt(2, recipe.getDuration());
-            ps.setInt(3,recipe.getExpertyse());
+            ps.setInt(3,recipe.getExpertise());
             ps.setString(4,recipe.getType());
             ps.setInt(5,recipe.getNbPeople());
             ps.setString(6,recipe.getImg());
@@ -114,14 +116,15 @@ private Connection connexionDB;
     public boolean update(RecipeBean recipe)throws SQLException,IOException{
         boolean res = true;
         connexionDB = ConnexionFactory.getInstance();
-        try (PreparedStatement ps = connexionDB.prepareStatement("UPDATE recipe SET title=? duration=? expertyse=? type=? nbPeople=? img=? description=? where id=?")) {
+        try (PreparedStatement ps = connexionDB.prepareStatement("UPDATE recipe SET title=?, duration=?, expertise=?, typeRecipe=?, nbPeople=?, img=?, description=? where id=?")) {
             ps.setString(1, recipe.getTitle());
             ps.setInt(2, recipe.getDuration());
-            ps.setInt(3,recipe.getExpertyse());
+            ps.setInt(3,recipe.getExpertise());
             ps.setString(4,recipe.getType());
             ps.setInt(5,recipe.getNbPeople());
             ps.setString(6,recipe.getImg());
             ps.setString(7,recipe.getDescription());
+            ps.setInt(8,recipe.getId());
             try {
                 ps.executeUpdate();
             } catch (SQLException e) {

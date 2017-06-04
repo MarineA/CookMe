@@ -10,7 +10,7 @@ public class RecipeBean implements Serializable{
 	private int id;
 	private String title;
 	private int duration;
-	private int expertyse = 1;
+	private int expertise = 1;
 	private String type;
 	private int nbPeople = 1 ;
 	private String img;
@@ -26,7 +26,7 @@ public class RecipeBean implements Serializable{
 		this.id = id;
 		this.title = title;
 		this.duration = duration;
-		this.expertyse = expertyse;
+		this.expertise = expertyse;
 		this.type = type;
 		this.nbPeople = nbPeople;
 		this.img = img;
@@ -62,13 +62,13 @@ public class RecipeBean implements Serializable{
 	}
 
 
-	public int getExpertyse() {
-		return expertyse;
+	public int getExpertise() {
+		return expertise;
 	}
 
 
-	public void setExpertyse(int expertyse) {
-		this.expertyse = expertyse;
+	public void setExpertise(int expertyse) {
+		this.expertise = expertyse;
 	}
 
 

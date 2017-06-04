@@ -40,5 +40,9 @@ public class PageMngBean implements Serializable{
 		return "adminUsers.xhtml";
 	}
 	
+	public String goToRecipeCreationPage(){
+		return "recipeCreation.xhtml";
+	}
+	
 	
 }
