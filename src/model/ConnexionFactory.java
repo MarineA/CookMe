@@ -12,7 +12,7 @@ public class ConnexionFactory {
 
     // Ouvre une connexion s'il n'en existe pas déja une
     public static Connection getInstance() throws IOException, SQLException {
-    	String url = "jdbc:mysql://localhost:8889/projetJEE?relaxAutoCommit=true";
+    	String url = "jdbc:mysql://localhost:3306/projetJEE?relaxAutoCommit=true";
     	String login = "root";
     	String pwd = "root";
         if (connectionMySQL == null) {
