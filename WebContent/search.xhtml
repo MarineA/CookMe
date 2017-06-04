@@ -27,32 +27,32 @@
 
 					<h:panelGrid columns="2">
 						<img src="img/clock_img.png" style="width: 50px" alt="Horloge"></img>
-						<h:outputLabel for="duration" value="#{recipeBean.duration} " />
+						<h:outputLabel for="duration" value="#{recipe.duration} " />
 					</h:panelGrid>
 
 					<h:panelGrid columns="2">
 						<img src="img/people_img.jpg" style="width: 50px"
 							alt="Many people"> </img>
-						<h:outputLabel for="nbPeople" value="#{recipeBean.nbPeople}" />
+						<h:outputLabel for="nbPeople" value="#{recipe.nbPeople}" />
 					</h:panelGrid>
 
 					<h:panelGrid columns="2">
 						<img src="img/note_img.png" style="width: 50px" alt="note">
 						</img>
-						<h:outputText value="#{recipeBean.expertise}" />
+						<h:outputText value="#{recipe.expertise}" />
 					</h:panelGrid>
 
 					<h:panelGrid columns="2">
 						<img src="img/load_img.png" style="width: 50px" alt="Type">
 						</img>
-						<h:outputLabel for="cookType" value="{recipeBean.typeRecipeList}" />
+						<h:outputLabel for="cookType" value="{recipe.typeRecipeList}" />
 					</h:panelGrid>
 
 				</h:panelGrid>
 
 				<h:panelGrid columns="1">
-					<h:outputText value="#{recipeBean.Title}" />
-					<h:outputText value="#{recipeBean.descritpion}" />
+					<h:outputText value="#{recipe.Title}" />
+					<h:outputText value="#{recipe.descritpion}" />
 				</h:panelGrid>
 
 
