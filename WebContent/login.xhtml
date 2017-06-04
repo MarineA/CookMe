@@ -1,27 +1,55 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:h="http://java.sun.com/jsf/html" 
-	  xmlns:f="http://java.sun.com/jsf/core"
-	  xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<c:if test="#{empty sessionScope}">
+
+<h:form method="post" action="connexion">
 	
-	<h:form>
-		<table border="0"> 
+	
+		<table border="0">
 			<tr>
-				<td> Your Login</td> 
-				<td> 
-					<h:inputText id="login" value="#{userBean.login}" required="true"/>
-						
-				</td>
-				<td> <h:message for="login" showDetail="true" style="color:red"/></td>	
+				<td>Your Login</td>
+				<td><h:inputText id="login" value="#{userLogin.login}"
+						required="true" /></td>
+				<td><h:message for="login" showDetail="true" style="color:red" /></td>
 			</tr>
-			
+
 			<tr>
-				<td> Your Password</td> <td> <h:inputSecret value="#{userBean.password}"/></td>
+				<td>Your Password</td>
+				<td><h:inputSecret value="#{userLogin.password}"
+						required="true" /></td>
 			</tr>
 			<tr>
-				<td> </td> <td> <h:commandButton  value="OK" action="#{pageMngBean.goToConnectPage}"/></td>
+				<td><h:commandButton value="Se connecter" action="#{loginController.login(userLogin)}">
+						<!-- <f:ajax render="co" execute="@form"/> -->
+					</h:commandButton></td>
+					
+					
 			</tr>
+				
+
+
 		</table>
-	</h:form>
+		
+</h:form>
+
+</c:if>
+
+	<c:if test="#{!empty sessionScope}">
+	<h:form method="post" action="deconnexion">
+			<table>
+						<tr> <p>Welcome </p>
+						<h:outputText id="co" value="#{sessionScope.userLogin.login}" /> </tr>
+						<tr><h:commandButton value="Se déconnecter" action="#{loginController.logout()}"></h:commandButton></tr>
+			</table>
 	
+	</h:form>
+
+	</c:if>	
+
+
 </html>

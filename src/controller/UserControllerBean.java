@@ -5,6 +5,9 @@ import java.sql.SQLException;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 import model.ConnexionFactory;
 import bean.UserBean;
@@ -25,5 +28,20 @@ public class UserControllerBean {
 		
 		return "connexionResult.xhtml";
 	}
+	
+	/*public void login(UserBean userbean) throws SQLException, IOException {
+		//FacesContext context = FacesContext.getCurrentInstance();
+		//context.getExternalContext().getSessionMap().put("user", userbean);
+		boolean valid = new UserDao(ConnexionFactory.getInstance()).validate(userbean);
+		if (valid){
+			HttpSession session = SessionUtils.getSession();
+		}
+	}
+	
+	public void logout(){
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+	}
+	
+	*/
 
 }

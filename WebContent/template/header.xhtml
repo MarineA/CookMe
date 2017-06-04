@@ -18,11 +18,11 @@
 				<h:commandButton value="(+) Become Member" action="#{pageMngBean.goToEmergencyPage}"  />
 			</h:form>
 			
-			<jsp:useBean id="myUser" scope="session" class="bean.UserBean">
-			
+			<!--<jsp:useBean id="myUser" scope="session" class="bean.UserBean">
+			-->
 			<ui:include src="/login.xhtml">
 			</ui:include>
-			</jsp:useBean>
+			<!-- </jsp:useBean> -->  
 		</div>
 	</ui:composition>
 </body>

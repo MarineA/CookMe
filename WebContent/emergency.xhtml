@@ -19,20 +19,30 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 		<tr>
 			<td>Firstname</td>
 			<td>
-				<h:inputText id="firstName" value="#{userBean.firstName}" />
+				<h:inputText id="firstName" value="#{userBean.firstName}">
+				<f:validator validatorId="validators.firstName" /> 
+				</h:inputText>
+			</td>
+			<td>
+				<h:message for="firstName" showDetail="true" style="color:red"/>
 			</td>
 		</tr>
 		<tr>
 			<td>Lastname</td>
 			<td>
-				<h:inputText id="lastName" value="#{userBean.lastName}" />		
+				<h:inputText id="lastName" value="#{userBean.lastName}" >
+				<f:validator validatorId="validators.firstName" /> 	
+				</h:inputText>	
+			</td>
+			<td>
+				<h:message for="lastName" showDetail="true" style="color:red"/>
 			</td>
 		</tr>
 		<tr>
 			<td>Age</td>
 			<td>
 				<h:inputText id="age" value="#{userBean.age}" >
-					<!--  <f:validator validatorId="validators.age" /> -->
+					 <f:validator validatorId="validators.age" /> 
 				</h:inputText>	
 			</td>
 			<td>

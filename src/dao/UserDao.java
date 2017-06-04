@@ -12,6 +12,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import bean.UserBean;
+import bean.UserLogin;
 import model.ConnexionFactory;
 
 @ManagedBean
@@ -127,4 +128,30 @@ public class UserDao {
 	        }
 	        return res;
 	    }
+	    
+	    public boolean validate(UserLogin user) throws SQLException, IOException {
+	    	boolean res = false;
+	        connexionDB = ConnexionFactory.getInstance();
+			PreparedStatement ps = null;
+
+			try {
+				
+				ps = connexionDB.prepareStatement("Select login, passwd from Users where login = ? and passwd = ?");
+				ps.setString(1, user.getLogin());
+				ps.setString(2, user.getPassword());
+
+				ResultSet rs = ps.executeQuery();
+
+				if (rs.next()) {
+					//result found, means valid inputs
+					res = true;
+				}
+			} catch (SQLException ex) {
+				System.out.println("Login error -->" + ex.getMessage());
+				res = false;
+			} finally {
+				connexionDB.close();
+			}
+			return res;
+		}
 }
