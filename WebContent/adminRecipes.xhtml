@@ -66,7 +66,6 @@ xmlns:c="http://java.sun.com/jsp/jstl/core">
 								</p:column>
 								<p:column colspan="1"></p:column>
 								<p:column colspan="1">
-									<h:outputText value="Cook expertise" />
 									<p:rating value="#{recipeList.selectedRecipe.expertise}" />
 								</p:column>
 							</p:row>
@@ -79,18 +78,15 @@ xmlns:c="http://java.sun.com/jsp/jstl/core">
 							<p:row>
 								<p:column colspan="1"></p:column>
 								<p:column colspan="1">
-									<p:selectCheckboxMenu id="cookType" label="Cook type" filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
-									   <f:selectItem itemLabel="Salade" itemValue="1" />
-									   <f:selectItem itemLabel="Meal" itemValue="2" />
-									   <f:selectItem itemLabel="Fish" itemValue="3" />
-									   <f:selectItem itemLabel="Desert" itemValue="4" />
-									</p:selectCheckboxMenu>
-								</p:column>
+									<p:inputText id="nbPeople" value="#{recipeList.selectedRecipe.nbPeople}"  min="0" max="500" />
+		  							<p:slider for="nbPeople"/>
+		  						</p:column>
 								<p:column colspan="1"></p:column>
 								<p:column colspan="1">
-									<p:inputText id="nbPeople" value="#{recipeList.selectedRecipe.nbPeople}"  min="0" max="500" />
-		  								<p:slider for="nbPeople"/>
-		  							</p:column>
+								        <p:selectCheckboxMenu id="type" value="#{selectedType.setSelectedTypes(recipeList.selectedRecipe.type)}" label="Type" filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
+								            <f:selectItems value="#{selectedType.types}" />
+								        </p:selectCheckboxMenu>
+								</p:column>
 							</p:row>
 							<p:row>	
 								<p:column colspan="4"><p:inputTextarea id="description" value="#{recipeList.selectedRecipe.description}" rows="5" cols="30" autoResize="true" /></p:column>
@@ -102,13 +98,15 @@ xmlns:c="http://java.sun.com/jsp/jstl/core">
 						</p:panelGrid>
 					</h:form>
 				</div> 		
-				</p:column>
+			</p:column>
 			
 		</p:row>
 		<p:row>
-			<h:form>
-		  		<h:commandButton value="Add" action="#{pageMngBean.goToRecipeCreationPage()}"/>
-			</h:form> 
+			<p:column>
+				<h:form>
+				  		<h:commandButton value="Add" action="#{pageMngBean.goToRecipeCreationPage()}"/>
+				</h:form> 
+			</p:column>
 		</p:row>
 		</p:panelGrid>
 	</center>

@@ -15,14 +15,14 @@ public class UserBean implements Serializable{
 	private String email;
 	private String login;
 	private String password;
-	private int typeUser;
+	private Boolean typeUser;
 
 
 	public UserBean(){
 		
 	}
 
-	public UserBean(int id, String firstName, String lastName, int age, String email, String login, String password, int typeUser) {
+	public UserBean(int id, String firstName, String lastName, int age, String email, String login, String password, Boolean typeUser) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -90,11 +90,11 @@ public class UserBean implements Serializable{
 		this.password = password;
 	}
 	
-	public int getTypeUser() {
+	public Boolean getTypeUser() {
 		return typeUser;
 	}
 
-	public void setTypeUser(int typeUser) {
+	public void setTypeUser(Boolean typeUser) {
 		this.typeUser= typeUser;
 	}
 	

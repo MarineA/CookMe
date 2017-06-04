@@ -33,7 +33,7 @@ public class UserDao {
 	        resultat = state.executeQuery("SELECT * FROM users");
 	        List<UserBean> users = new ArrayList<>();
 	        while(resultat.next()){
-	            users.add(new UserBean(resultat.getInt(1), resultat.getString(2),resultat.getString(3), resultat.getInt(4), resultat.getString(5), resultat.getString(6), resultat.getString(7), resultat.getInt(8)));
+	            users.add(new UserBean(resultat.getInt(1), resultat.getString(2),resultat.getString(3), resultat.getInt(4), resultat.getString(5), resultat.getString(6), resultat.getString(7), resultat.getBoolean(8)));
 	        }
 	        resultat.close();
 	        connexionDB.close();
@@ -48,7 +48,7 @@ public class UserDao {
 	            PS.setInt(0, id);
 	            resultat = PS.executeQuery();
 	            resultat.next();
-	            userbean = new UserBean(resultat.getInt(1), resultat.getString(2),resultat.getString(3), resultat.getInt(4), resultat.getString(5), resultat.getString(6), resultat.getString(7), resultat.getInt(8));
+	            userbean = new UserBean(resultat.getInt(1), resultat.getString(2),resultat.getString(3), resultat.getInt(4), resultat.getString(5), resultat.getString(6), resultat.getString(7), resultat.getBoolean(8));
 	        }
 	        resultat.close();
 	        connexionDB.close();
@@ -66,7 +66,7 @@ public class UserDao {
 	            ps.setString(4,userbean.getEmail());
 	            ps.setString(5,userbean.getLogin());
 	            ps.setString(6,userbean.getPassword());
-	            ps.setInt(7,userbean.getTypeUser());
+	            ps.setBoolean(7,userbean.getTypeUser());
 
 	            try {
 	                ps.executeUpdate();

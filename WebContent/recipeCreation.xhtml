@@ -29,7 +29,7 @@ xmlns:c="http://java.sun.com/jsp/jstl/core">
 		<p:panelGrid style="margin-top:20px">   
 				<p:row>
 					<p:column colspan="2"><h:outputLabel for="title" value="Title" /></p:column>
-					<p:column colspan="2"><h:inputText id="title" value="#{recipeBeane.title}" /></p:column>
+					<p:column colspan="2"><h:inputText id="title" value="#{recipeBean.title}" /></p:column>
 				</p:row>
 				<p:row>
 					<p:column colspan="1"><img src="img/clock_img.png" style="width:50px" alt="Horloge"/></p:column>
@@ -57,11 +57,8 @@ xmlns:c="http://java.sun.com/jsp/jstl/core">
 				<p:row>
 					<p:column colspan="1"></p:column>
 					<p:column colspan="1">
-						<p:selectCheckboxMenu id="cookType" label="Cook type" value="#{recipeBean.type}" filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
-						   <f:selectItem itemLabel="Salade" itemValue="1" />
-						   <f:selectItem itemLabel="Meal" itemValue="2" />
-						   <f:selectItem itemLabel="Fish" itemValue="3" />
-						   <f:selectItem itemLabel="Desert" itemValue="4" />
+					   <p:selectCheckboxMenu id="type" value="#{recipeBean.type}" label="Type" filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
+							     <f:selectItems value="#{selectedType.types}" />
 						</p:selectCheckboxMenu>
 					</p:column>
 					<p:column colspan="1"></p:column>
@@ -71,7 +68,7 @@ xmlns:c="http://java.sun.com/jsp/jstl/core">
  							</p:column>
 				</p:row>
 				<p:row>	
-					<p:column colspan="4"><p:inputTextarea id="description" value="#{recipeList.selectedRecipe.description}" rows="5" cols="30" autoResize="true" /></p:column>
+					<p:column colspan="4"><p:inputTextarea id="description" value="#{recipeBean.description}" rows="5" cols="30" autoResize="true" /></p:column>
 				</p:row>
 				<p:row>
 					<p:column colspan="4"><p:commandButton value="Create"  method="post" action="#{recipeControllerBean.create(recipeBean)}"/></p:column>

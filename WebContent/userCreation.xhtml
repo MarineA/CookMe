@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+<h:body>
+
+<ui:composition template="/template/layout.xhtml">
+<ui:define name="activity">
+<h1>Emergency</h1>
+</ui:define>
+
+<ui:define name="content">	
+<center>
+<h:form>
+	<table border="0">
+		<tr>
+			<td>Firstname</td>
+			<td>
+				<h:inputText id="firstName" value="#{userBean.firstName}" />
+			</td>
+		</tr>
+		<tr>
+			<td>Lastname</td>
+			<td>
+				<h:inputText id="lastName" value="#{userBean.lastName}" />		
+			</td>
+		</tr>
+		<tr>
+			<td>Age</td>
+			<td>
+				<h:inputText id="age" value="#{userBean.age}" >
+					<!--  <f:validator validatorId="validators.age" /> -->
+				</h:inputText>	
+			</td>
+			<td>
+				<h:message for="age" showDetail="true" style="color:red"/>
+			</td>
+		</tr>
+		<tr>
+			<td>Email</td>
+			<td>
+				<h:inputText id="email" value="#{userBean.email}" >
+					<f:validator validatorId="validators.email" /> 
+				</h:inputText>
+			</td>
+			<td>
+				<h:message for="email" showDetail="true" style="color:red"/>
+			</td>
+		</tr>
+		<tr>
+			<td>Your Login</td>
+			<td> 
+				<h:inputText id="login" value="#{userBean.login}" required="true">
+				 	<f:validator validatorId="validators.username" /> 
+				</h:inputText>
+			</td>
+			<td>
+				<h:message for="login" showDetail="true" style="color:red"/>
+			</td>
+		</tr>
+		<tr>
+			<td>Your Password</td>
+			<td>
+				<h:inputSecret id="password" value="#{userBean.password}" />
+			</td>
+		</tr>
+		<tr>
+			<td>Re-enter your password</td>
+			<td><h:inputSecret value="#{userBean.password}" /></td>
+		</tr>
+			<tr>
+			<td>Admin</td>
+			<td>
+				<p:selectBooleanCheckbox id="admin" value="#{userBean.typeUser}" />
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><h:commandButton value="Register"  method="post" action="#{userControllerBean.createByAdmin(userBean)}"/></td>
+		</tr>
+	</table>
+</h:form>
+</center>
+</ui:define>
+</ui:composition>
+</h:body>
+
+
+
+</html>

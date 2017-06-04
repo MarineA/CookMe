@@ -44,7 +44,7 @@ xmlns:c="http://java.sun.com/jsp/jstl/core">
 						<h:column>
 							<f:facet name="header"></f:facet>
 							<h:form id="form">  
-								<h:commandButton value="X"  method="post" action="#{userControllerBean.delete(usertmp)}"/>
+								<h:commandButton value="X"  method="post" action="#{userControllerBean.delete(usertemp)}"/>
 								
 								<p:commandButton value="modifier" update="@all" actionListener="#{userList.setSelectedUser(usertemp)}" styleClass="ui-priority-primary" />
 				             
@@ -62,9 +62,8 @@ xmlns:c="http://java.sun.com/jsp/jstl/core">
 							<p:column colspan="1"><h:outputLabel for="firstName" value="First Name" /></p:column>
 							<p:column colspan="1"><h:inputText id="firstName" value="#{userList.selectedUser.firstName}" /></p:column>
 							<p:column colspan="1">
-								<h:selectManyCheckbox value="#{userList.selectedUser.typeUser}">
-	   								<f:selectItem itemValue="1" itemLabel="Admin" />
-   								</h:selectManyCheckbox>
+								<h:outputLabel for="admin" value="Admin" />
+								<p:selectBooleanCheckbox id="admin" value="#{userList.selectedUser.typeUser}" />
    							</p:column>
 						</p:row>
 						<p:row>
@@ -118,7 +117,7 @@ xmlns:c="http://java.sun.com/jsp/jstl/core">
 	<p:row>
 		<p:column>
 			<h:form>
-			  		<h:commandButton value="Add" action="#{pageMngBean.goToEmergencyPage}"/>
+			  		<h:commandButton value="Add" action="#{pageMngBean.goToUserCreationPage}"/>
 			</h:form> 
 		</p:column>
 	</p:row>

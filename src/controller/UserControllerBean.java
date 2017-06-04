@@ -26,10 +26,17 @@ public class UserControllerBean {
 	
 	public String create(UserBean userbean) throws IOException, SQLException{
 		UserDao userDao = new UserDao(ConnexionFactory.getInstance());
-		userbean.setTypeUser(0);
+		userbean.setTypeUser(false);
 		userDao.insert(userbean);
 		
 		return "connexionResult.xhtml";
+	}
+	
+	public String createByAdmin(UserBean userbean) throws IOException, SQLException{
+		UserDao userDao = new UserDao(ConnexionFactory.getInstance());
+		userDao.insert(userbean);
+		
+		return "adminUsers.xhtml";
 	}
 	
 	public String update(UserBean userbean) throws IOException, SQLException{
