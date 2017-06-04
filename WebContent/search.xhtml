@@ -1,70 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-xmlns:h="http://java.sun.com/jsf/html"
-xmlns:p="http://primefaces.org/ui"
-xmlns:f="http://java.sun.com/jsf/core"
-xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<!-- <ui:composition template="/template/layout.xhtml"> -->
+<!-- 	<ui:define name="activity"> -->
+<!-- 		<h1>Recipes</h1> -->
+<!-- 	</ui:define> -->
+
+<!-- 	<ui:define name="content"> -->
+
+		<h1>Liste de recherche pour une recette de #{recipeList.recipes}
+			#{recipeBean.duration} minutes, pour #{recipeBean.nbPeople}
+			personnes, d'expertise #{recipeBean.expertise}</h1>
+
+		<h:form id="form">
+			<p:dataGrid var="recipe" value="#{recipeList.recipes}" columns="2"
+				rows="12" paginator="true"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="9,12,15">
+
+				<h:panelGrid columns="1">
+
+					<h:panelGrid columns="2">
+						<img src="img/clock_img.png" style="width: 50px" alt="Horloge"></img>
+						<h:outputLabel for="duration" value="#{recipe.duration} " />
+					</h:panelGrid>
+
+					<h:panelGrid columns="2">
+						<img src="img/people_img.jpg" style="width: 50px"
+							alt="Many people"> </img>
+						<h:outputLabel for="nbPeople" value="#{recipe.nbPeople}" />
+					</h:panelGrid>
+
+					<h:panelGrid columns="2">
+						<img src="img/note_img.png" style="width: 50px" alt="note">
+						</img>
+						<h:outputText value="#{recipe.expertise}" />
+					</h:panelGrid>
+
+					<h:panelGrid columns="2">
+						<img src="img/load_img.png" style="width: 50px" alt="Type">
+						</img>
+						<h:outputLabel for="cookType" value="{recipe.typeRecipeList}" />
+					</h:panelGrid>
+
+				</h:panelGrid>
+
+				<h:panelGrid columns="1">
+					<h:outputText value="#{recipe.Title}" />
+					<h:outputText value="#{recipe.descritpion}" />
+				</h:panelGrid>
 
 
-<h:head>
-<title>Cook Me</title>
-</h:head>
 
+			</p:dataGrid>
 
-<ui:composition template="/template/layout.xhtml">
+		</h:form>
+<!-- 	</ui:define> -->
+<!-- </ui:composition> -->
 
-<ui:define name="content">
-<h1>Recipes Research</h1>
-
-
-<h:form id="form">
-    <p:dataGrid var="recipe" value="#{recipeBean.cars}" columns="3" layout="grid"
-        rows="12" paginator="true" id="cars"
-        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-        rowsPerPageTemplate="6,12,16">
- 
-        <f:facet name="header">
-            Cars for Sale
-        </f:facet>
- 
-        <p:panel header="#{recipeBean.title}" style="text-align:center">
-            <h:panelGrid columns="1" style="width:100%">
-<!--                 <p:graphicImage name="demo/images/car/#{car.brand}.gif"/>  -->
- 
-                <h:outputText value="#{recipeBean.duration}" />
- 
-                <p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail">
-                    <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
-                    <f:setPropertyActionListener value="#{car}" target="#{dataGridView.selectedCar}" />
-                </p:commandLink>
-            </h:panelGrid>
-        </p:panel>
- 
-    </p:dataGrid>
- 
-    <p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
-        <p:outputPanel id="carDetail" style="text-align:center;">
-            <p:panelGrid  columns="2" rendered="#{not empty dataGridView.selectedCar}" columnClasses="label,value">
-                <f:facet name="header">
-                    <p:graphicImage name="demo/images/car/#{dataGridView.selectedCar.brand}-big.gif"/> 
-                </f:facet>
- 
-                <h:outputText value="Id:" />
-                <h:outputText value="#{dataGridView.selectedCar.id}" />
- 
-                <h:outputText value="Year" />
-                <h:outputText value="#{dataGridView.selectedCar.year}" />
- 
-                <h:outputText value="Color:" />
-                <h:outputText value="#{dataGridView.selectedCar.color}" style="color:#{dataGridView.selectedCar.color}"/>
- 
-                <h:outputText value="Price" />
-                <h:outputText value="$#{dataGridView.selectedCar.price}" />
-            </p:panelGrid>
-        </p:outputPanel>
-    </p:dialog>
-</h:form>
-
-</ui:define>
-</ui:composition>
 </html>

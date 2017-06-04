@@ -10,9 +10,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
-import javax.servlet.ServletException;
 
-import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.primefaces.context.RequestContext;
  
 @ManagedBean
@@ -49,7 +47,7 @@ public class UserLogin implements Serializable{
         } catch (ServletException e) {
             // Handle unknown username/password in request.login().
             context.addMessage(null, new FacesMessage("Unknown login "+e.getMessage()));
-            // éventuellement log.log(Level.SEVERE, "Failed to logout user!", e);
+            // ï¿½ventuellement log.log(Level.SEVERE, "Failed to logout user!", e);
             // avec private static Logger log = Logger.getLogger(AuthBackingBean.class.getName());
         }
     }  
