@@ -10,7 +10,6 @@ import javax.faces.bean.ManagedBean;
 public class PageMngBean implements Serializable{
 	
 	public PageMngBean(){
-		
 	}
 	
 	public String goToFirstPage(){
@@ -28,4 +27,18 @@ public class PageMngBean implements Serializable{
 	public String goToShopPage(){
 		return "shop.xhtml";
 	}
+	
+	public String goToConnectPage(){
+		return "recipe.xhtml";
+	}
+	
+	public String goToAdminRecipesPage(){
+		return "adminRecipes.xhtml";
+	}
+	
+	public String goToAdminUsersPage(){
+		return "adminUsers.xhtml";
+	}
+	
+	
 }

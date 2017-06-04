@@ -1,32 +1,42 @@
 package bean;
 
-public class RecipeBean {
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
+@ApplicationScoped
+public class RecipeBean implements Serializable{
 	
 	private int id;
 	private String title;
 	private int duration;
-	private int expertyse;
-	private String type;
-	private int nbPeople;
+	private int expertise = 1;
+	private String typeRecipe;
+	private List<String> typeRecipeList;
+	private int nbPeople = 1 ;
 	private String img;
-	private String descritpion;
-	
-	
-	public RecipeBean(){
+	private String description;
+
+		public RecipeBean(){
 		
 	}
 	
-	public RecipeBean(int id, String title, int duration, int expertyse, String type, int nbPeople, String img,
-			String descritpion) {
+	public RecipeBean(int id, String title, int duration, int expertise, String typeRecipe, int nbPeople, String img,
+			String description) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.duration = duration;
-		this.expertyse = expertyse;
-		this.type = type;
+		this.expertise = expertise;
+		this.typeRecipe = typeRecipe;
 		this.nbPeople = nbPeople;
 		this.img = img;
-		this.descritpion = descritpion;
+		this.description = description;
+//		this.typeRecipeList=new ArrayList<String>();
 	}
 
 	public int getId() {
@@ -58,23 +68,23 @@ public class RecipeBean {
 	}
 
 
-	public int getExpertyse() {
-		return expertyse;
+	public int getExpertise() {
+		return expertise;
 	}
 
 
-	public void setExpertyse(int expertyse) {
-		this.expertyse = expertyse;
+	public void setExpertise(int expertise) {
+		this.expertise = expertise;
 	}
 
 
-	public String getType() {
-		return type;
+	public String getTypeRecipe() {
+		return typeRecipe;
 	}
 
 
-	public void setType(String type) {
-		this.type = type;
+	public void setTypeRecipe(String typeRecipe) {
+		this.typeRecipe = typeRecipe;
 	}
 
 
@@ -98,13 +108,21 @@ public class RecipeBean {
 	}
 
 
-	public String getDescritpion() {
-		return descritpion;
+	public String getDescription() {
+		return description;
 	}
 
 
-	public void setDescritpion(String descritpion) {
-		this.descritpion = descritpion;
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public List<String> getTypeRecipeList() {
+		return typeRecipeList;
+	}
+
+	public void setTypeRecipeList(List<String> typeRecipeList) {
+		this.typeRecipeList = typeRecipeList;
 	}
 	
 	

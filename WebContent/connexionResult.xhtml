@@ -1,18 +1,18 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 xmlns:h="http://java.sun.com/jsf/html"
+xmlns:p="http://primefaces.org/ui"
 xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:body>
-
-
-<h:form>
-<center>
-	<img src="img/cookme.png" style="width:500px" alt="logo-cookme"> </img> 
-	<p><h:commandButton value="Go to Cook Me" action="#{pageMngBean.goToFirstPage}"  /></p>
-</center>
-</h:form>
-
+<ui:composition template="/template/layout.xhtml">
+	<ui:define name="activity">
+	<h1>test</h1>
+	</ui:define>
+	
+	<ui:define name="content">
+		#{userBean.firstName}
+	</ui:define>
+</ui:composition>
 </h:body>
-
 </html>

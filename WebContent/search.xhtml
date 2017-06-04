@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<!-- <ui:composition template="/template/layout.xhtml"> -->
+<!-- 	<ui:define name="activity"> -->
+<!-- 		<h1>Recipes</h1> -->
+<!-- 	</ui:define> -->
+
+<!-- 	<ui:define name="content"> -->
+
+		<h1>Liste de recherche pour une recette de #{recipeList.recipes}
+			#{recipeBean.duration} minutes, pour #{recipeBean.nbPeople}
+			personnes, d'expertise #{recipeBean.expertise}</h1>
+
+		<h:form id="form">
+			<p:dataGrid var="recipe" value="#{recipeList.recipes}" columns="2"
+				rows="12" paginator="true"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="9,12,15">
+
+				<h:panelGrid columns="1">
+
+					<h:panelGrid columns="2">
+						<img src="img/clock_img.png" style="width: 50px" alt="Horloge"></img>
+						<h:outputLabel for="duration" value="#{recipe.duration} " />
+					</h:panelGrid>
+
+					<h:panelGrid columns="2">
+						<img src="img/people_img.jpg" style="width: 50px"
+							alt="Many people"> </img>
+						<h:outputLabel for="nbPeople" value="#{recipe.nbPeople}" />
+					</h:panelGrid>
+
+					<h:panelGrid columns="2">
+						<img src="img/note_img.png" style="width: 50px" alt="note">
+						</img>
+						<h:outputText value="#{recipe.expertise}" />
+					</h:panelGrid>
+
+					<h:panelGrid columns="2">
+						<img src="img/load_img.png" style="width: 50px" alt="Type">
+						</img>
+						<h:outputLabel for="cookType" value="{recipe.typeRecipeList}" />
+					</h:panelGrid>
+
+				</h:panelGrid>
+
+				<h:panelGrid columns="1">
+					<h:outputText value="#{recipe.Title}" />
+					<h:outputText value="#{recipe.descritpion}" />
+				</h:panelGrid>
+
+
+
+			</p:dataGrid>
+
+		</h:form>
+<!-- 	</ui:define> -->
+<!-- </ui:composition> -->
+
+</html>

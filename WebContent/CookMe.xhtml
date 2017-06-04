@@ -1,26 +1,33 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 xmlns:h="http://java.sun.com/jsf/html"
-xmlns:p="http://primefaces.org/ui">
-
-<title>Cook Me</title>
-
+xmlns:p="http://primefaces.org/ui"
+xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
+<title>Cook Me</title>
 </h:head>
+
 <h:body>
+<ui:composition template="/template/layout.xhtml">
 
-<h1>Cook me</h1>
+	<ui:define name="activity">
+	<h1>test</h1>
+	</ui:define>
 
-<h:form>
+	<ui:define name="content">
 
-<h:commandButton value="Emergency" action="#{pageMngBean.goToEmergencyPage}"  />
-
-<h:commandButton value="Recipes" action="#{pageMngBean.goToRecipetPage}"  />
-
-<h:commandButton value="Shop" action="#{pageMngBean.goToShopPage}"  />
-
-</h:form>
+		<h:form id="form-activity">
+		
+			<h:commandButton value="Emergency" style="background-color:#FFBF00; width:230px;" action="#{pageMngBean.goToEmergencyPage}"  />
+	
+			<h:commandButton value="Recipes" style="background-color:#2ECCFA; width:230px;" action="#{pageMngBean.goToRecipePage}"  />
+		
+			<h:commandButton value="Shop" style="background-color:#04B45F; width:230px;" action="#{pageMngBean.goToShopPage}"  />
+	
+		</h:form>
+	</ui:define>
+</ui:composition>
 
 </h:body>
 
