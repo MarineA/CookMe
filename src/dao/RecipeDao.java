@@ -22,40 +22,86 @@ public class RecipeDao {
 		this.connexionDB = connexion;
 	}
 
-	public HashMap<String, RecipeBean> selectAll() throws Exception {
-		connexionDB = ConnexionFactory.getInstance();
-		ResultSet resultat;
-		Statement state = connexionDB.createStatement();
-		resultat = state.executeQuery("SELECT * FROM recipe");
-		HashMap<String, RecipeBean> hashmapRecipe = new HashMap<>();
-		while (resultat.next()) {
-			hashmapRecipe.put(resultat.getString(0),
-					new RecipeBean(resultat.getInt(0), resultat.getString(1), resultat.getInt(2), resultat.getInt(3),
-							resultat.getString(4), resultat.getInt(5), resultat.getString(6), resultat.getString(7)));
-		}
-		resultat.close();
-		connexionDB.close();
-		return hashmapRecipe;
-	}
+	public List<RecipeBean> selectAll() throws Exception{
+        connexionDB = ConnexionFactory.getInstance();
+        ResultSet resultat;
+        Statement state = connexionDB.createStatement();
+        resultat = state.executeQuery("SELECT * FROM recipe");
+        List<RecipeBean> recipeList = new ArrayList<>();
+        while(resultat.next()){
+        	recipeList.add(new RecipeBean(resultat.getInt(1), resultat.getString(2), resultat.getInt(3),resultat.getInt(4), resultat.getString(5), resultat.getInt(6), resultat.getString(7), resultat.getString(8)));
+        }
+        resultat.close();
+        connexionDB.close();
+        return recipeList;
+    }
 
-	// public HashMap<String, RecipeBean> research(int duration, int nbPeople,
-	// int expertise, String typeRecipe)
-	public List<RecipeBean> research(int duration, int nbPeople, int expertise)
-			throws Exception {
-		connexionDB = ConnexionFactory.getInstance();
-		ResultSet resultat;
-		Statement state = connexionDB.createStatement();
-		resultat = state.executeQuery("SELECT * FROM recipe where duration=" + duration + " and nbPeople=" + nbPeople
-				+ " and expertise=" + expertise);
-		List<RecipeBean> listResearch = new ArrayList<>();
-		while (resultat.next()) {
-			listResearch.add(new RecipeBean(resultat.getInt(1), resultat.getString(2), resultat.getInt(3), resultat.getInt(4),
-							resultat.getString(5), resultat.getInt(6), resultat.getString(7), resultat.getString(8)));
-		}
-		resultat.close();
-		connexionDB.close();
-		return listResearch;
-	}
+	
+	public List<RecipeBean> research(int duration, int nbPeople, int expertise) throws Exception{
+        connexionDB = ConnexionFactory.getInstance();
+        ResultSet resultat;
+        Statement state = connexionDB.createStatement();
+        resultat = state.executeQuery("SELECT * FROM recipe where duration=" + duration + " and nbPeople=" + nbPeople + " and expertise=" + expertise);
+        List<RecipeBean> recipeList = new ArrayList<>();
+        while(resultat.next()){
+        	recipeList.add(new RecipeBean(resultat.getInt(1), resultat.getString(2), resultat.getInt(3),resultat.getInt(4), resultat.getString(5), resultat.getInt(6), resultat.getString(7), resultat.getString(8)));
+        }
+        resultat.close();
+        connexionDB.close();
+        return recipeList;
+    }
+	
+	
+	
+//	// public HashMap<String, RecipeBean> research(int duration, int nbPeople,
+//	// int expertise, String typeRecipe)
+//	public List<RecipeBean> research(int duration, int nbPeople, int expertise)
+////	public List<RecipeBean> research(RecipeBean recipe)
+//			throws Exception {
+//		connexionDB = ConnexionFactory.getInstance();
+//		ResultSet resultat;
+//		Statement state = connexionDB.createStatement();
+////		resultat = state.executeQuery("SELECT * FROM recipe where duration=" + duration + " and nbPeople=" + nbPeople
+////				+ " and expertise=" + expertise);
+//		resultat = state.executeQuery("SELECT * FROM recipe");
+//		List<RecipeBean> listResearch = new ArrayList<>();
+//		while (resultat.next()) {
+//			listResearch.add(new RecipeBean(resultat.getInt(1), resultat.getString(2), resultat.getInt(3), resultat.getInt(4),
+//							resultat.getString(5), resultat.getInt(6), resultat.getString(7), resultat.getString(8)));
+//		}
+//		
+//		resultat.close();
+//		connexionDB.close();
+//		return listResearch;
+//		
+////		connexionDB = ConnexionFactory.getInstance();
+////		boolean res = true;
+////		ResultSet resultat = null;
+////		try (PreparedStatement ps = connexionDB.prepareStatement(
+////				"SELECT * FROM recipe where duration=? and nbPeople=? and expertise=?")) {
+////			ps.setInt(1, recipe.getDuration());
+////			ps.setInt(5, recipe.getNbPeople());
+////			ps.setInt(3, recipe.getExpertise());
+////			try {
+////				resultat = ps.executeQuery();
+////			} catch (SQLException e) {
+////				System.err.println(e.getMessage());
+////				ps.cancel();
+////				res = false;
+////			}
+////			List<RecipeBean> listResearch = new ArrayList<>();
+////			while (resultat.next()) {
+////				listResearch.add(new RecipeBean(resultat.getInt(1), resultat.getString(2), resultat.getInt(3), resultat.getInt(4),
+////								resultat.getString(5), resultat.getInt(6), resultat.getString(7), resultat.getString(8)));
+////			}
+////  			ps.close();
+////		resultat.close();
+////		connexionDB.close();
+////		return listResearch;
+////
+////		}
+//		
+//	}
 
 	public RecipeBean select(int id) throws SQLException, IOException {
 		connexionDB = ConnexionFactory.getInstance();
@@ -81,7 +127,7 @@ public class RecipeDao {
 			ps.setString(1, recipe.getTitle());
 			ps.setInt(2, recipe.getDuration());
 			ps.setInt(3, recipe.getExpertise());
-			// ps.setString(4, recipe.gettypeRecipe());
+			ps.setString(4, recipe.getTypeRecipe());
 			ps.setInt(5, recipe.getNbPeople());
 			ps.setString(6, recipe.getImg());
 			ps.setString(7, recipe.getDescription());

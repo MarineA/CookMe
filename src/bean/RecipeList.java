@@ -11,18 +11,18 @@ import javax.faces.bean.ManagedBean;
 @ApplicationScoped
 public class RecipeList implements Serializable {
 	
-	private List<RecipeBean> recipeList;
+	private List<RecipeBean> recipes;
 	private RecipeBean selectedRecipe;
 
 	public RecipeList() {
-		this.recipeList = new ArrayList<>();
+		this.recipes = new ArrayList<>();
 	}
 
-	public List<RecipeBean> getRecipeList() {
-		return recipeList;
+	public List<RecipeBean> getRecipes() {
+		return recipes;
 	}
-	public void setRecipeList(List<RecipeBean> recipeList) {
-		this.recipeList = recipeList;
+	public void setRecipes(List<RecipeBean> recipeList) {
+		this.recipes = recipeList;
 	}
 	
 	public RecipeBean getSelectedRecipe() {
